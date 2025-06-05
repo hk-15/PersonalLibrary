@@ -1,0 +1,42 @@
+@model PersonalLibrary.Models.Book
+@{
+    ViewData["Title"] = "Catalogue";
+}
+<h1>@ViewData["Title"]</h1>
+
+<a asp-action="Add" class="btn btn-primary">Add Books</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Read?</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Translator</th>
+            <th scope="col">Original Language</th>
+            <th scope="col">Publication</th>
+            <th scope="col">Edition Publication</th>
+            <th scope="col">Collection</th>
+            <th scope="col">Notes</th>
+
+        </tr>
+    </thead>
+    @foreach (var book in @ViewBag.books)
+    {
+        <tr>
+            <td scope="row">@book.Read</td>
+            <td scope="row">@book.Title</td>
+            <td scope="row">@book.Author?.Name</td>
+            <td scope="row">@book.Translator?.Name</td>
+            <td scope="row">@book.OriginalLanguage</td>
+            <td scope="row">@book.PublicationYear</td>
+            <td scope="row">@book.EditionPublicationYear</td>
+            <td scope="row">@book.Collection?.CollectionName</td>
+            <td scope="row">@book.Notes</td>
+            <td scope="row">
+                <a asp-action="Edit" asp-route-id="@book.BookId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@book.BookId">Delete</a> | <a asp-action="Read" asp-route-itemid="@book.BookId">Mark as Read</a>
+            </td>
+        </tr>
+    }
+</table>

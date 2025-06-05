@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PersonalLibrary.Models;
+using PersonalLibrary.Databases;
 
 namespace PersonalLibrary.Controllers;
 
@@ -8,17 +9,15 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    private readonly PersonalLibraryContext _context;
+
+    public HomeController(PersonalLibraryContext context, ILogger<HomeController> logger)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
     {
         return View();
     }

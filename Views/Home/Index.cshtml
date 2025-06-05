@@ -3,6 +3,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to the library</h1>
+
+    <div class="container text-center mt-5">
+        <form asp-controller="BookInventory" asp-action="Index" method="get" class=" mb-4 d-flex justify-content-center">
+            <input type="text" name="search" class="form-control w-50 me-2" placeholder="Search books by title, author or translator"/>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <p class="mb-10">or</p>
+
+        <a class="btn btn-primary" asp-controller="BookInventory" asp-action="Index">Browse Catalogue</a>
+    </div>
 </div>

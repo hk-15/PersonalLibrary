@@ -1,0 +1,56 @@
+@model PersonalLibrary.Models.Book 
+
+@{
+    ViewData["Title"] = "Add a new book";
+}
+<h1>@ViewData["Title"]</h1>
+
+@using (Html.BeginForm("Add", "Books", FormMethod.Post))
+{   
+    <label for="title" style="display: block";>Title</label>
+    <input type="text" id="title" name="title" required>
+
+    //dropdown of existing and search and can add new entries here
+    <label for="author" style="display: block";>Author</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="translator" style="display: block";>Translator (if applicable)</label>
+    <input type="text" id="translator" name="translator">
+
+    <label for="lang" style="display: block";>Original language (if applicable)</label>
+    <input type="text" id="lang" name="lang">
+
+    <label for="collection" style="display: block";>Select a collection</label>
+        <select name="collection" id="collection">
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+            <option value="Poetry">Poetry</option>
+            <option value="Anthologies">Anthologies</option>
+        </select>
+
+    <label for="fyear" style="display: block";>Year of first publication</label>
+    <input type="number" id="fyear" name="fyear">
+
+    <label for="eyear" style="display: block";>Year of edition publication</label>
+    <input type="number" id="eyear" name="eyear">
+
+    <label for="isbn" style="display: block";>ISBN</label>
+    <input type="number" id="isbn" name="isbn">
+
+    <label for="notes" style="display: block";>Add notes?</label>
+    <input type="text" id="notes" name="notes">
+
+    <label for="read" style="display: block";>Mark as read?</label>
+    <input type="checkbox" id="read" name="read" value="true">
+    
+    <input type="submit" value="Submit" class="btn btn-dark" style="display: block"; />
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+
