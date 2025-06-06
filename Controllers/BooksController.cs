@@ -49,7 +49,6 @@ public class BooksController : Controller
 
         _ = int.TryParse(data["fyear"], out int fYear);
         _ = int.TryParse(data["eyear"], out int eYear);
-        _ = int.TryParse(data["isbn"], out int isbn);
         _ = Boolean.TryParse(data["read"], out bool read);
         string? collectionInput = data["collection"];
 
@@ -65,7 +64,7 @@ public class BooksController : Controller
             {
                 var author = authorList.Find(author => author.Name == data["author"]);
 
-                var newBook = new Book { Title = data["title"], Author = author, Translator = data["translator"], OriginalLanguage = data["lang"], Collection = collection, PublicationYear = fYear, EditionPublicationYear = eYear, Isbn = isbn, Notes = data["notes"], Read = read };
+                var newBook = new Book { Title = data["title"], Author = author, Translator = data["translator"], OriginalLanguage = data["lang"], Collection = collection, PublicationYear = fYear, EditionPublicationYear = eYear, Isbn = data["isbn"], Notes = data["notes"], Read = read };
 
                 _context.Books.Add(newBook);
                 _context.SaveChanges();
@@ -78,7 +77,7 @@ public class BooksController : Controller
             var newAuthor = new Author { Name = data["author"] };
             _context.Authors.Add(newAuthor);
 
-            var newBook = new Book { Title = data["title"], Author = newAuthor, Translator = data["translator"], OriginalLanguage = data["lang"], Collection = collection, PublicationYear = fYear, EditionPublicationYear = eYear, Isbn = isbn, Notes = data["notes"], Read = read };
+            var newBook = new Book { Title = data["title"], Author = newAuthor, Translator = data["translator"], OriginalLanguage = data["lang"], Collection = collection, PublicationYear = fYear, EditionPublicationYear = eYear, Isbn = data["isbn"], Notes = data["notes"], Read = read };
 
             _context.Books.Add(newBook);
             _context.SaveChanges();
