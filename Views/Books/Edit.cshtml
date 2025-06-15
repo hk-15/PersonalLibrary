@@ -1,0 +1,80 @@
+@model PersonalLibrary.Models.BookDto
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>Edit a record</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookDtoId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorName" class="control-label">Author</label>
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Translator" class="control-label"></label>
+                <input asp-for="Translator" class="form-control" />
+                <span asp-validation-for="Translator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OriginalLanguage" class="control-label">Original language</label>
+                <input asp-for="OriginalLanguage" class="form-control" />
+                <span asp-validation-for="OriginalLanguage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Collection" class="control-label"></label>
+                <input asp-for="Collection" class="form-control" />
+                <span asp-validation-for="Collection" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="PublicationYear" class="control-label">Publication year</label>
+                <input asp-for="PublicationYear" class="form-control" />
+                <span asp-validation-for="PublicationYear" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="EditionPublicationYear" class="control-label">Edition publication year</label>
+                <input asp-for="EditionPublicationYear" class="form-control" />
+                <span asp-validation-for="EditionPublicationYear" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Isbn" class="control-label">ISBN</label>
+                <input asp-for="Isbn" class="form-control" />
+                <span asp-validation-for="Isbn" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Read" class="control-label">Read?</label>
+                <input asp-for="Read" type="checkbox" data-val="true" id="Read" name="Read" value="true">
+                <input name="Read" type="hidden" value="false">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning">
+        @TempData["Message"]
+    </div>
+}
+<div>
+    <a asp-action="Catalogue">Back to catalogue</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

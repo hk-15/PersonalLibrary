@@ -1,0 +1,29 @@
+@model PersonalLibrary.Models.Book
+
+@{
+    ViewData["Title"] = "Mark as read?";
+}
+</br>
+@if (@Model.Read == false) {
+    <p class="lead">Mark <i>@Model.Title</i> as read?</p>
+}
+else
+{
+    <p class="lead">Mark <i>@Model.Title</i> as unread?</p>
+}
+</br>
+<form method="post" asp-action="ReadStatus">
+    <input type="hidden" asp-for="BookId" />
+    <button name="button" value="read" class="btn btn-primary">Confirm</button>
+</form>
+</br>
+
+<div>
+    <a asp-action="Catalogue">Back to catalogue</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

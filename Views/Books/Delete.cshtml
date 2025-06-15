@@ -1,0 +1,25 @@
+@model PersonalLibrary.Models.Book
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Delete a record</h1>
+</br>
+
+<p class="lead">Are you sure you want to remove <i>@Model.Title</i> from the catalogue?</p>
+</br>
+<form method="post" asp-action="Delete">
+    <input type="hidden" asp-for="BookId" />
+    <button name="button" value="delete" class="btn btn-danger">Delete</button>
+</form>
+</br>
+
+<div>
+    <a asp-action="Catalogue">Back to catalogue</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
